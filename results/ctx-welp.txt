@@ -1,0 +1,1 @@
+welp94-q8 | VRAM 13095 MiB | shallow: prompt 23 tok @ 239 tok/s, decode 180 tok/s | deep: prompt 214266 tok @ 2511 tok/s, decode 106 tok/s

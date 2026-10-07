@@ -1,10 +1,7 @@
-0.06.196.139 I cmn          init: llama threadpool init, n_threads = 6
-0.06.273.481 I 
-0.06.273.633 I system_info: n_threads = 6 (n_threads_batch = 6) / 12 | CUDA : ARCHS = 890 | USE_GRAPHS = 1 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
-0.06.273.674 I perplexity: tokenizing the input ..
-0.06.708.895 I perplexity: tokenization took 435.216 ms
-0.06.709.051 I perplexity: calculating perplexity over 40 chunks, n_ctx=2048, batch_size=2048, n_seq=1
-0.08.068.100 I perplexity: 1.36 seconds per pass - ETA 0.90 minutes
-[1]4.8160,[2]6.0662,[3]6.4056,[4]6.4844,[5]6.4027,[6]5.5660,[7]5.0369,[8]5.0360,[9]5.3170,[10]5.4485,[11]5.5405,[12]5.7675,[13]5.8287,[14]5.9145,[15]5.9792,[16]6.1523,[17]6.2072,[18]6.3093,[19]6.2518,[20]5.9999,[21]6.0334,[22]6.0795,[23]6.1277,[24]6.1583,[25]6.2044,[26]6.1897,[27]6.3303,[28]6.4160,[29]6.4030,[30]6.3784,[31]6.2941,[32]6.1951,[33]6.1670,[34]6.1628,[35]6.1798,[36]6.1963,[37]6.1006,[38]6.0322,[39]5.9562,[40]5.8731,
-0.31.048.093 I Final estimate: PPL = 5.8731 +/- 0.06942
-
+0.00.487.343 W common_fit_params: failed to fit params to free device memory: n_gpu_layers already set by user to 99, abort
+0.04.134.380 E ggml_backend_cuda_buffer_type_alloc_buffer: allocating 12190.81 MiB on device 0: cudaMalloc failed: out of memory
+0.04.134.386 E alloc_tensor_range: failed to allocate CUDA0 buffer of size 12782987776
+0.04.384.468 E llama_model_load: error loading model: unable to allocate CUDA0 buffer
+0.04.384.474 E llama_model_load_from_file_impl: failed to load model
+0.04.384.479 E cmn  common_init_: failed to load model 'models/q/ud-iq3xxs.gguf'
+0.04.384.495 E llama_perplexity: unable to load model

@@ -121,3 +121,14 @@ Prefill (llama-bench, tokens/s, flash attention, RTX 4080 Super, mean of 3 runs;
 | q4km (16 layers of experts on CPU, no op offload) | 343 | 382 | - |
 
 MTP on UD-IQ3_XXS (Unsloth MTP GGUF, 14.1 GB, `--spec-type draft-mtp --spec-draft-n-max 2`, q8_0 draft cache): served decode 212 tok/s vs 158 without (same 600-token code prompt, 66% draft acceptance), but only 64k context fits (15.7 GB) vs 131k. `scripts/serve.sh` (MODE=long|fast) and the `llama-qwen36` user service serve it on port 8080.
+
+Full 262k context on 16 GB (prompt of 214k tokens, served; `scripts/ctx_test.sh`, `scripts/needle.py`):
+
+| setup | VRAM | decode shallow | decode at 214k | prefill at 214k |
+|---|---:|---:|---:|---:|
+| UD-IQ3_XXS, q4_0 KV, -ub 256 | 14.8 GB | 155 | 107 | 2041 |
+| UD-IQ3_XXS, tiered q8_0 KV (`--kv-vram-cells 120000`) | 14.9 GB | 156 | 12 | 2103 |
+| UD-IQ3_XXS, K q8_0 + V q4_0 | fits | - | - | ~30 (no CUDA FA kernel, CPU fallback) |
+| ternary-9.4g-down2k, q8_0 KV | 13.1 GB | 180 | 106 | 2511 |
+
+Needle test, UD-IQ3_XXS with q4_0 KV at 214k: 3/3 (10%, 50%, 90% depth). This is the service default (`MODE=full`).

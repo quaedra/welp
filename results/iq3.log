@@ -1,1 +1,9 @@
 downloaded
+
+pass@1 0.0%  (0/164)  arm=off effort=- temp=0.0 max_tokens=1024  0.0s
+wrote /home/jach/dev/ternary-qwen36/results/humaneval/ud-iq3xxs/summary.json
+scripts/eval_coding.sh: line 23: kill: (2485222) - No such process
+ctx 262144:  15306 MiB
+ctx 131072:  15303 MiB
+ctx 65536:  15303 MiB
+IQ3-DONE
