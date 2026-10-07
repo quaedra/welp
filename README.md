@@ -106,3 +106,18 @@ HumanEval: 164 problems, thinking off, temperature 0, max 1024 tokens, `bonsai-a
 | ternary-8.2g | 8.2 | yes, 262k (12.2 GB) | 6.92 | 2.37 | 78.7% | - | 186 |
 
 Notes: Q4_K_M with `--n-cpu-moe` needs `--no-op-offload` (op offload of CPU experts crashes with an illegal memory access on long prompts, stock Prism build too).
+
+Long-exact suite, UD-IQ3_XXS: **21/37** (coding 2/12, computation 9/15, workspace 10/10).
+
+Prefill (llama-bench, tokens/s, flash attention, RTX 4080 Super, mean of 3 runs; `results/prefill.txt`):
+
+| model | pp512 | pp4096 | pp16384 |
+|---|---:|---:|---:|
+| ternary-9.4g-down2k | 5303 | 5442 | 5194 |
+| ternary-8.2g | 5798 | 5958 | 5637 |
+| iq2xxs | 5441 | 5706 | 5388 |
+| ud-iq3xxs | 3486 | 4923 | 4909 |
+| bonsai-27b | 2202 | 2271 | 2143 |
+| q4km (16 layers of experts on CPU, no op offload) | 343 | 382 | - |
+
+MTP on UD-IQ3_XXS (Unsloth MTP GGUF, 14.1 GB, `--spec-type draft-mtp --spec-draft-n-max 2`, q8_0 draft cache): served decode 212 tok/s vs 158 without (same 600-token code prompt, 66% draft acceptance), but only 64k context fits (15.7 GB) vs 131k. `scripts/serve.sh` (MODE=long|fast) and the `llama-qwen36` user service serve it on port 8080.

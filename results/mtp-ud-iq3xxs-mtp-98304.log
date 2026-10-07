@@ -1,0 +1,17 @@
+0.00.109.536 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.109.845 W srv  llama_server: -----------------
+0.00.109.846 W srv  llama_server: CORS is set to allow all origins ('*') and no API key is set
+0.00.109.846 W srv  llama_server: this can be a security risk (cross-origin attacks)
+0.00.109.847 W srv  llama_server: more info: https://github.com/ggml-org/llama.cpp/pull/25655
+0.00.109.847 W srv  llama_server: -----------------
+0.00.111.109 I srv    load_model: loading model 'models/q/ud-iq3xxs-mtp.gguf'
+0.00.791.569 W common_fit_params: failed to fit params to free device memory: n_gpu_layers already set by user to 99, abort
+0.07.687.061 E ggml_backend_cuda_buffer_type_alloc_buffer: allocating 196.66 MiB on device 0: cudaMalloc failed: out of memory
+0.07.687.066 E ggml_gallocr_reserve_n_impl: failed to allocate CUDA0 buffer of size 206209280
+0.07.687.067 E graph_reserve: failed to allocate compute buffers
+0.07.693.492 E llama_init_from_model: failed to initialize the context: failed to allocate compute pp buffers
+0.07.693.499 E cmn  common_init_: failed to create context with model 'models/q/ud-iq3xxs-mtp.gguf'
+0.07.693.502 E cmn  common_init_: failed to create context with model 'models/q/ud-iq3xxs-mtp.gguf'
+0.07.693.506 E srv    load_model: failed to create_context with model 'models/q/ud-iq3xxs-mtp.gguf'
+0.07.693.508 I srv    operator(): operator(): cleaning up before exit...
+0.07.694.030 E srv  llama_server: exiting due to model loading error
