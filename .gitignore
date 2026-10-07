@@ -11,3 +11,4 @@ results/mtp-dl.log
 results/pip.log
 results/build.log
 results/cmake.log
+release/

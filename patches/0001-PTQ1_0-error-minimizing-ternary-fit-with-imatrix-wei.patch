@@ -1,5 +1,5 @@
 From 1e177c9e2c7bba34200260ed38a1e59b5973c769 Mon Sep 17 00:00:00 2001
-From: jach <michaljach@gmail.com>
+From: jach <952751+michaljach@users.noreply.github.com>
 Date: Wed, 7 Oct 2026 19:26:40 +0200
 Subject: [PATCH] PTQ1_0: error-minimizing ternary fit with imatrix weighting
 
