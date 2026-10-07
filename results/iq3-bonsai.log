@@ -1,0 +1,11 @@
+
+pass@1 93.9%  (154/164)  arm=off effort=- temp=0.0 max_tokens=1024  264.9s
+wrote /home/jach/dev/ternary-qwen36/results/humaneval/ud-iq3xxs/summary.json
+ud-iq3xxs	12600	5.8731 +/- 0.06942	1.8998 +/- 0.01481	512/0=4964.6 0/128=169.0
+ctx 262144:  624 MiB
+ctx 131072: up 14926 MiB
+ctx 65536: up 14182 MiB
+
+pass@1 91.46%  (150/164)  arm=off effort=- temp=0.0 max_tokens=1024  464.4s
+wrote /home/jach/dev/ternary-qwen36/results/humaneval/bonsai-27b/summary.json
+ALL-DONE

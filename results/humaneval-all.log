@@ -1,0 +1,12 @@
+
+pass@1 90.85%  (149/164)  arm=off effort=- temp=0.0 max_tokens=1024  223.0s
+wrote /home/jach/dev/ternary-qwen36/results/humaneval/ternary-9.4g-down2k/summary.json
+
+pass@1 78.66%  (129/164)  arm=off effort=- temp=0.0 max_tokens=1024  209.3s
+wrote /home/jach/dev/ternary-qwen36/results/humaneval/ternary-8.2g/summary.json
+
+pass@1 84.76%  (139/164)  arm=off effort=- temp=0.0 max_tokens=1024  299.7s
+wrote /home/jach/dev/ternary-qwen36/results/humaneval/iq2xxs/summary.json
+    raise RemoteDisconnected("Remote end closed connection without"
+                             " response")
+http.client.RemoteDisconnected: Remote end closed connection without response

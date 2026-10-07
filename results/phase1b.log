@@ -1,0 +1,18 @@
+== t6-fit-q6k-imxsqrt
+-rw-r--r-- 1 jach jach 9005356000 10-06 22:46 models/q/t6-fit-q6k-imxsqrt.gguf
+t6-fit-q6k-imxsqrt	8589	8.3982 +/- 0.10850	2.7376 +/- 0.02674	-
+== t7-fit-q6k-imxkq
+-rw-r--r-- 1 jach jach 9005356000 10-06 22:51 models/q/t7-fit-q6k-imxkq.gguf
+t7-fit-q6k-imxkq	8589	7.4756 +/- 0.09379	2.5836 +/- 0.02427	-
+== q4km
+-rw-r--r-- 1 jach jach 21166758880 10-06 22:59 models/q/q4km.gguf
+Traceback (most recent call last):
+  File "<string>", line 2, in <module>
+    import csv,sys; r=list(csv.DictReader(sys.stdin)); print(' '.join(f"{x['n_prompt']}/{x['n_gen']}={float(x['avg_ts']):.1f}" for x in r))
+                                                             ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in <genexpr>
+    import csv,sys; r=list(csv.DictReader(sys.stdin)); print(' '.join(f"{x['n_prompt']}/{x['n_gen']}={float(x['avg_ts']):.1f}" for x in r))
+                                                                                                      ~~~~~^^^^^^^^^^^^^
+TypeError: float() argument must be a string or a real number, not 'NoneType'
+EVAL FAILED q4km
+PHASE1B-DONE

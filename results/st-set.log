@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/home/jach/dev/ternary-qwen36/scripts/export_gguf.py", line 69, in <module>
+    main()
+    ~~~~^^
+  File "/home/jach/dev/ternary-qwen36/scripts/export_gguf.py", line 62, in main
+    b = ptq1_bytes(T.reshape(E * R_, C), st[f"{part}_d"].reshape(E * R_, C // G))
+  File "/home/jach/dev/ternary-qwen36/scripts/export_gguf.py", line 31, in ptq1_bytes
+    x = (T.float().view(rows, C // G, G) * D.float().unsqueeze(-1)).view(rows, C).contiguous().numpy()
+RuntimeError: Can't call numpy() on Tensor that requires grad. Use tensor.detach().numpy() instead.
+st-e	9362	6.3908 +/- 0.07685	2.1917 +/- 0.01869	-
+ST-DONE

@@ -1,0 +1,56 @@
+{"family": "coding", "name": "suite-tar-01", "seed": 1, "arm": "A", "ok": false, "tokens": 15620, "wall_s": 90.5, "detail": ["hidden1:invalid_gzip", "hidden2:invalid_gzip"]}
+{"family": "coding", "name": "suite-tar-01", "seed": 2, "arm": "A", "ok": false, "tokens": 86473, "wall_s": 566.2, "detail": ["hidden1:unrecoverable_json", "hidden2:unrecoverable_json"]}
+{"family": "coding", "name": "suite-tar-01", "seed": 3, "arm": "A", "ok": false, "tokens": 5283, "wall_s": 31.9, "detail": ["hidden1:result_schema", "hidden2:invalid_gzip"]}
+{"family": "coding", "name": "suite-tar-01", "seed": 4, "arm": "A", "ok": false, "tokens": 11477, "wall_s": 65.5, "detail": ["hidden1:invalid_gzip", "hidden2:invalid_gzip"]}
+{"family": "coding", "name": "xfer-zip-01", "seed": 1, "arm": "A", "ok": false, "tokens": 2643, "wall_s": 16.9, "detail": ["hidden1:comment"]}
+{"family": "coding", "name": "xfer-zip-01", "seed": 2, "arm": "A", "ok": false, "tokens": 20481, "wall_s": 115.9, "detail": ["candidate_unavailable"]}
+{"family": "coding", "name": "xfer-zip-01", "seed": 3, "arm": "A", "ok": true, "tokens": 3109, "wall_s": 18.9, "detail": []}
+{"family": "coding", "name": "xfer-zip-01", "seed": 4, "arm": "A", "ok": true, "tokens": 4807, "wall_s": 28.5, "detail": []}
+{"family": "coding", "name": "xfer-mime-01", "seed": 1, "arm": "A", "ok": false, "tokens": 15778, "wall_s": 91.7, "detail": ["hidden1:result_schema", "hidden2:result_schema"]}
+{"family": "coding", "name": "xfer-mime-01", "seed": 2, "arm": "A", "ok": false, "tokens": 25715, "wall_s": 149.5, "detail": ["hidden1:result_schema", "hidden2:result_schema"]}
+{"family": "coding", "name": "xfer-mime-01", "seed": 3, "arm": "A", "ok": false, "tokens": 29688, "wall_s": 174.0, "detail": ["hidden1:result_schema", "hidden2:result_schema"]}
+{"family": "coding", "name": "xfer-mime-01", "seed": 4, "arm": "A", "ok": false, "tokens": 9232, "wall_s": 56.7, "detail": ["hidden1:unrecoverable_json", "hidden2:addresses"]}
+{"family": "computation", "name": "knapsack", "seed": 1, "arm": "A", "ok": true, "tokens": 22127, "wall_s": 126.1, "detail": "answer 270 truth 270"}
+{"family": "computation", "name": "knapsack", "seed": 2, "arm": "A", "ok": true, "tokens": 27577, "wall_s": 158.5, "detail": "answer 161 truth 161"}
+{"family": "computation", "name": "knapsack", "seed": 3, "arm": "A", "ok": true, "tokens": 23985, "wall_s": 137.1, "detail": "answer 237 truth 237"}
+{"family": "computation", "name": "digits", "seed": 1, "arm": "A", "ok": false, "tokens": 21436, "wall_s": 121.9, "detail": "answer 270656 truth 54305"}
+{"family": "computation", "name": "digits", "seed": 2, "arm": "A", "ok": false, "tokens": 21590, "wall_s": 122.9, "detail": "answer 473367 truth 35671"}
+{"family": "computation", "name": "digits", "seed": 3, "arm": "A", "ok": false, "tokens": 22560, "wall_s": 128.8, "detail": "answer 685521 truth 159976"}
+{"family": "computation", "name": "lcs", "seed": 1, "arm": "A", "ok": false, "tokens": 49152, "wall_s": 292.1, "detail": "answer None truth 17012"}
+{"family": "computation", "name": "lcs", "seed": 2, "arm": "A", "ok": false, "tokens": 20789, "wall_s": 117.2, "detail": "answer 17010 truth 16006"}
+{"family": "computation", "name": "lcs", "seed": 3, "arm": "A", "ok": false, "tokens": 20706, "wall_s": 116.5, "detail": "answer 8002 truth 14009"}
+{"family": "computation", "name": "sales", "seed": 1, "arm": "A", "ok": false, "tokens": 26550, "wall_s": 155.0, "detail": "answer 3002344 truth 3002244"}
+{"family": "computation", "name": "sales", "seed": 2, "arm": "A", "ok": false, "tokens": 10410, "wall_s": 59.9, "detail": "answer 9 truth 10"}
+{"family": "computation", "name": "sales", "seed": 3, "arm": "A", "ok": true, "tokens": 12303, "wall_s": 70.9, "detail": "answer 1245458 truth 1245458"}
+{"family": "computation", "name": "weblog", "seed": 1, "arm": "A", "ok": true, "tokens": 22366, "wall_s": 133.0, "detail": "answer 1238271 truth 1238271"}
+{"family": "computation", "name": "weblog", "seed": 2, "arm": "A", "ok": true, "tokens": 14352, "wall_s": 86.2, "detail": "answer 24 truth 24"}
+{"family": "computation", "name": "weblog", "seed": 3, "arm": "A", "ok": true, "tokens": 20489, "wall_s": 121.2, "detail": "answer 4 truth 4"}
+{"family": "workspace", "name": "invoiceH", "seed": 1, "arm": "A", "ok": false, "tokens": 5715, "wall_s": 34.9, "detail": "submitted; full_pass=False"}
+{"family": "workspace", "name": "invoiceH", "seed": 2, "arm": "A", "ok": true, "tokens": 3811, "wall_s": 24.0, "detail": "submitted; full_pass=True"}
+{"family": "workspace", "name": "dedupeH", "seed": 1, "arm": "A", "ok": false, "tokens": 7025, "wall_s": 41.1, "detail": "submitted; full_pass=False"}
+{"family": "workspace", "name": "dedupeH", "seed": 2, "arm": "A", "ok": true, "tokens": 18664, "wall_s": 107.7, "detail": "submitted; full_pass=True"}
+{"family": "workspace", "name": "ledgerH", "seed": 1, "arm": "A", "ok": false, "tokens": 10804, "wall_s": 62.6, "detail": "submitted; full_pass=False"}
+{"family": "workspace", "name": "ledgerH", "seed": 2, "arm": "A", "ok": false, "tokens": 4994, "wall_s": 28.9, "detail": "submitted; full_pass=False"}
+{"family": "workspace", "name": "chain", "seed": 1, "arm": "A", "ok": false, "tokens": 392, "wall_s": 3.1, "detail": "submitted; full_pass=False"}
+{"family": "workspace", "name": "chain", "seed": 2, "arm": "A", "ok": true, "tokens": 654, "wall_s": 4.5, "detail": "submitted; full_pass=True"}
+{"family": "workspace", "name": "copy", "seed": 1, "arm": "A", "ok": true, "tokens": 568, "wall_s": 3.9, "detail": "submitted; full_pass=True"}
+{"family": "workspace", "name": "copy", "seed": 2, "arm": "A", "ok": true, "tokens": 593, "wall_s": 4.2, "detail": "submitted; full_pass=True"}
+
+| family | task | A |
+| --- | --- | ---: |
+| coding | suite-tar-01 | 0/4 |
+| coding | xfer-mime-01 | 0/4 |
+| coding | xfer-zip-01 | 2/4 |
+| computation | digits | 0/3 |
+| computation | knapsack | 3/3 |
+| computation | lcs | 0/3 |
+| computation | sales | 1/3 |
+| computation | weblog | 3/3 |
+| workspace | chain | 1/2 |
+| workspace | copy | 2/2 |
+| workspace | dedupeH | 1/2 |
+| workspace | invoiceH | 1/2 |
+| workspace | ledgerH | 0/2 |
+| **total** | | **14/37** |
+
+completion tokens: A 619,918

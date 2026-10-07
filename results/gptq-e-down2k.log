@@ -1,0 +1,43 @@
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] You tried to access the `ExpertsInterface` with a `config._experts_implementation` set to `None`. This is expected if you use an Expert Module as a standalone Module. If this is not the case, something went wrong with the dispatch of `config._experts_implementation`
+layer  0 linear_attention    30.7s  tokens/expert min 9414 median 31457
+layer  1 linear_attention    28.8s  tokens/expert min 1067 median 30116
+layer  2 linear_attention    27.8s  tokens/expert min 13626 median 29636
+layer  3 full_attention      21.8s  tokens/expert min 1836 median 28794
+layer  4 linear_attention    25.0s  tokens/expert min 2207 median 27189
+layer  5 linear_attention    24.4s  tokens/expert min 3757 median 28531
+layer  6 linear_attention    24.9s  tokens/expert min 2722 median 26782
+layer  7 full_attention      22.0s  tokens/expert min 1047 median 25246
+layer  8 linear_attention    25.5s  tokens/expert min 850 median 23336
+layer  9 linear_attention    24.9s  tokens/expert min 721 median 24649
+layer 10 linear_attention    25.0s  tokens/expert min 1517 median 26945
+layer 11 full_attention      22.3s  tokens/expert min 3087 median 27298
+layer 12 linear_attention    24.9s  tokens/expert min 1648 median 24303
+layer 13 linear_attention    25.0s  tokens/expert min 1644 median 24586
+layer 14 linear_attention    29.2s  tokens/expert min 1493 median 24328
+layer 15 full_attention      22.1s  tokens/expert min 2209 median 25827
+layer 16 linear_attention    24.7s  tokens/expert min 1589 median 25008
+layer 17 linear_attention    25.0s  tokens/expert min 2745 median 24924
+layer 18 linear_attention    24.5s  tokens/expert min 1102 median 25437
+layer 19 full_attention      22.0s  tokens/expert min 1502 median 23486
+layer 20 linear_attention    25.0s  tokens/expert min 1377 median 23471
+layer 21 linear_attention    24.6s  tokens/expert min 227 median 25374
+layer 22 linear_attention    24.6s  tokens/expert min 1220 median 25325
+layer 23 full_attention      22.3s  tokens/expert min 1634 median 27829
+layer 24 linear_attention    24.4s  tokens/expert min 941 median 25001
+layer 25 linear_attention    26.6s  tokens/expert min 867 median 25210
+layer 26 linear_attention    24.9s  tokens/expert min 1148 median 25223
+layer 27 full_attention      22.1s  tokens/expert min 1237 median 25240
+layer 28 linear_attention    24.4s  tokens/expert min 1244 median 26972
+layer 29 linear_attention    25.0s  tokens/expert min 2171 median 24558
+layer 30 linear_attention    24.6s  tokens/expert min 1636 median 24098
+layer 31 full_attention      21.9s  tokens/expert min 1463 median 23712
+layer 32 linear_attention    24.8s  tokens/expert min 1298 median 27384
+layer 33 linear_attention    26.7s  tokens/expert min 1127 median 27077
+layer 34 linear_attention    24.4s  tokens/expert min 884 median 25703
+layer 35 full_attention      21.7s  tokens/expert min 574 median 26974
+layer 36 linear_attention    24.4s  tokens/expert min 962 median 25695
+layer 37 linear_attention    24.4s  tokens/expert min 1474 median 23872
+layer 38 linear_attention    24.8s  tokens/expert min 192 median 24022
+layer 39 full_attention      22.4s  tokens/expert min 744 median 20970

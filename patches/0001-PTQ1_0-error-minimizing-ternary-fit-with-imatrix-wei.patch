@@ -1,0 +1,122 @@
+From 1e177c9e2c7bba34200260ed38a1e59b5973c769 Mon Sep 17 00:00:00 2001
+From: jach <michaljach@gmail.com>
+Date: Wed, 7 Oct 2026 19:26:40 +0200
+Subject: [PATCH] PTQ1_0: error-minimizing ternary fit with imatrix weighting
+
+Pick trits and the group scale that minimize the weighted squared error
+(top-k scan plus Lloyd passes) instead of absmax rounding, which zeroes
+most weights of a model not trained ternary. GGML_PTQ1_0_ABSMAX=1 keeps
+the old path. GGML_PTQ1_0_IMX=kq weights the imatrix as in k-quants;
+GGML_PTQ1_0_IMX_POW=p uses qw^p.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01NBBU1ZetEBK8hRYSa631Gc
+---
+ ggml/src/ggml-quants.c | 87 +++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 85 insertions(+), 2 deletions(-)
+
+diff --git a/ggml/src/ggml-quants.c b/ggml/src/ggml-quants.c
+index bfb3892..ff359e0 100644
+--- a/ggml/src/ggml-quants.c
++++ b/ggml/src/ggml-quants.c
+@@ -2284,12 +2284,95 @@ void dequantize_row_ptq1_0(const block_ptq1_0 * GGML_RESTRICT x, float * GGML_RE
+     }
+ }
+ 
++// Fit trits t and scale d to minimise sum a_i (x_i - d t_i)^2 (a = imatrix weight, or 1).
++// Scan top-k by |x| (best d for set S = sum_S a|x| / sum_S a), then refine with Lloyd passes.
++static int ptq1_0_cmp_desc(const void * a, const void * b) {
++    const float fa = *(const float *)a, fb = *(const float *)b;
++    return (fa < fb) - (fa > fb);
++}
++
++static void ptq1_0_fit_group(const float * x, const float * qw, float * t, float * d_out) {
++    float ax[QK_PTQ1_0][2]; // |x|, index
++    for (int j = 0; j < QK_PTQ1_0; ++j) { ax[j][0] = fabsf(x[j]); ax[j][1] = (float) j; }
++    qsort(ax, QK_PTQ1_0, sizeof(ax[0]), ptq1_0_cmp_desc);
++
++    double s1 = 0, s0 = 0, best = -1, best_d = 0;
++    for (int k = 0; k < QK_PTQ1_0; ++k) {
++        const int i = (int) ax[k][1];
++        const double a = qw ? qw[i] + 1e-12 : 1.0;
++        s1 += a * ax[k][0];
++        s0 += a;
++        const double gain = s1 * s1 / s0;
++        if (gain > best) { best = gain; best_d = s1 / s0; }
++    }
++
++    double d = best_d;
++    for (int it = 0; it < 4 && d > 0; ++it) {
++        double n1 = 0, n0 = 0;
++        for (int j = 0; j < QK_PTQ1_0; ++j) {
++            if (fabsf(x[j]) > 0.5 * d) {
++                const double a = qw ? qw[j] + 1e-12 : 1.0;
++                n1 += a * fabsf(x[j]);
++                n0 += a;
++            }
++        }
++        if (n0 == 0) break;
++        const double nd = n1 / n0;
++        if (fabs(nd - d) < 1e-7 * d) { d = nd; break; }
++        d = nd;
++    }
++
++    for (int j = 0; j < QK_PTQ1_0; ++j) {
++        t[j] = d > 0 && fabsf(x[j]) > 0.5f * (float) d ? (x[j] > 0 ? 1.0f : -1.0f) : 0.0f;
++    }
++    *d_out = (float) d;
++}
++
+ size_t quantize_ptq1_0(const float * GGML_RESTRICT src, void * GGML_RESTRICT dst, int64_t nrow, int64_t n_per_row, const float * quant_weights) {
+-    (void)quant_weights; // ternary codes come from the weights themselves; an imatrix has no role
++    // GGML_PTQ1_0_ABSMAX=1 keeps the original absmax rounding (exact for weights trained ternary)
++    static int absmax = -1;
++    if (absmax < 0) {
++        const char * e = getenv("GGML_PTQ1_0_ABSMAX");
++        absmax = e && atoi(e) != 0;
++    }
++    // GGML_PTQ1_0_IMX: imatrix weight a_j = qw^p with p = GGML_PTQ1_0_IMX_POW (default 1), or "kq" for qw * sqrt(sigma2 + x^2) as in k-quants
++    static int   imx_kq  = -1;
++    static float imx_pow = 1.0f;
++    if (imx_kq < 0) {
++        const char * m = getenv("GGML_PTQ1_0_IMX");
++        const char * p = getenv("GGML_PTQ1_0_IMX_POW");
++        imx_kq = m && strcmp(m, "kq") == 0;
++        if (p) imx_pow = (float) atof(p);
++    }
+     const size_t row_size = ggml_row_size(GGML_TYPE_PTQ1_0, n_per_row);
+     char * qrow = (char *)dst;
++    float t[QK_PTQ1_0];
++    float a[QK_PTQ1_0];
+     for (int64_t row = 0; row < nrow; ++row) {
+-        quantize_row_ptq1_0_ref(src, (block_ptq1_0 *)qrow, n_per_row);
++        if (absmax) {
++            quantize_row_ptq1_0_ref(src, (block_ptq1_0 *)qrow, n_per_row);
++        } else {
++            float sigma2 = 0;
++            if (quant_weights && imx_kq) {
++                for (int64_t j = 0; j < n_per_row; ++j) sigma2 += src[j]*src[j];
++                sigma2 = 2*sigma2/n_per_row;
++            }
++            block_ptq1_0 * y = (block_ptq1_0 *)qrow;
++            for (int64_t ib = 0; ib < n_per_row / QK_PTQ1_0; ++ib) {
++                const float * x  = src + ib*QK_PTQ1_0;
++                const float * qw = quant_weights ? quant_weights + ib*QK_PTQ1_0 : NULL;
++                if (qw) {
++                    for (int j = 0; j < QK_PTQ1_0; ++j) {
++                        a[j] = imx_kq ? qw[j] * sqrtf(sigma2 + x[j]*x[j]) : (imx_pow == 1.0f ? qw[j] : powf(qw[j], imx_pow));
++                    }
++                }
++                float d;
++                ptq1_0_fit_group(x, qw ? a : NULL, t, &d);
++                // the reference packer maps trits exactly when their absmax is 1; then set the real scale
++                quantize_row_ptq1_0_ref(t, y + ib, QK_PTQ1_0);
++                y[ib].d = GGML_FP32_TO_FP16(d);
++            }
++        }
+         src  += n_per_row;
+         qrow += row_size;
+     }
+-- 
+2.56.0
+
