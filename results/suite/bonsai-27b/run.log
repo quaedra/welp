@@ -1,0 +1,45 @@
+{"family": "coding", "name": "xfer-mime-01", "seed": 4, "arm": "A", "ok": false, "tokens": 50091, "wall_s": 642.6, "detail": ["hidden1:part_count"]}
+{"family": "computation", "name": "knapsack", "seed": 1, "arm": "A", "ok": true, "tokens": 7210, "wall_s": 87.9, "detail": "answer 270 truth 270"}
+{"family": "computation", "name": "knapsack", "seed": 2, "arm": "A", "ok": true, "tokens": 21302, "wall_s": 267.7, "detail": "answer 161 truth 161"}
+{"family": "computation", "name": "knapsack", "seed": 3, "arm": "A", "ok": true, "tokens": 13258, "wall_s": 163.2, "detail": "answer 237 truth 237"}
+{"family": "computation", "name": "digits", "seed": 1, "arm": "A", "ok": false, "tokens": 21939, "wall_s": 275.1, "detail": "answer 54508 truth 54305"}
+{"family": "computation", "name": "digits", "seed": 2, "arm": "A", "ok": false, "tokens": 21173, "wall_s": 264.9, "detail": "answer 9026 truth 35671"}
+{"family": "computation", "name": "digits", "seed": 3, "arm": "A", "ok": false, "tokens": 21126, "wall_s": 265.2, "detail": "answer 272261 truth 159976"}
+{"family": "computation", "name": "lcs", "seed": 1, "arm": "A", "ok": false, "tokens": 21211, "wall_s": 266.9, "detail": "answer 13003 truth 17012"}
+{"family": "computation", "name": "lcs", "seed": 2, "arm": "A", "ok": false, "tokens": 21303, "wall_s": 268.4, "detail": "answer 14004 truth 16006"}
+{"family": "computation", "name": "lcs", "seed": 3, "arm": "A", "ok": false, "tokens": 23392, "wall_s": 296.1, "detail": "answer 12001 truth 14009"}
+{"family": "computation", "name": "sales", "seed": 1, "arm": "A", "ok": false, "tokens": 18051, "wall_s": 234.2, "detail": "answer 3002304 truth 3002244"}
+{"family": "computation", "name": "sales", "seed": 2, "arm": "A", "ok": true, "tokens": 5631, "wall_s": 72.7, "detail": "answer 10 truth 10"}
+{"family": "computation", "name": "sales", "seed": 3, "arm": "A", "ok": false, "tokens": 6229, "wall_s": 80.7, "detail": "answer 1134746 truth 1245458"}
+{"family": "computation", "name": "weblog", "seed": 1, "arm": "A", "ok": true, "tokens": 10040, "wall_s": 134.2, "detail": "answer 1238271 truth 1238271"}
+{"family": "computation", "name": "weblog", "seed": 2, "arm": "A", "ok": true, "tokens": 9408, "wall_s": 128.8, "detail": "answer 24 truth 24"}
+{"family": "computation", "name": "weblog", "seed": 3, "arm": "A", "ok": true, "tokens": 4257, "wall_s": 59.8, "detail": "answer 4 truth 4"}
+{"family": "workspace", "name": "invoiceH", "seed": 1, "arm": "A", "ok": true, "tokens": 8587, "wall_s": 113.6, "detail": "submitted; full_pass=True"}
+{"family": "workspace", "name": "invoiceH", "seed": 2, "arm": "A", "ok": true, "tokens": 3429, "wall_s": 48.3, "detail": "submitted; full_pass=True"}
+{"family": "workspace", "name": "dedupeH", "seed": 1, "arm": "A", "ok": true, "tokens": 15445, "wall_s": 198.5, "detail": "submitted; full_pass=True"}
+{"family": "workspace", "name": "dedupeH", "seed": 2, "arm": "A", "ok": false, "tokens": 14963, "wall_s": 193.6, "detail": "submitted; full_pass=False"}
+{"family": "workspace", "name": "ledgerH", "seed": 1, "arm": "A", "ok": true, "tokens": 5246, "wall_s": 69.1, "detail": "submitted; full_pass=True"}
+{"family": "workspace", "name": "ledgerH", "seed": 2, "arm": "A", "ok": true, "tokens": 15966, "wall_s": 208.4, "detail": "submitted; full_pass=True"}
+{"family": "workspace", "name": "chain", "seed": 1, "arm": "A", "ok": true, "tokens": 672, "wall_s": 10.0, "detail": "submitted; full_pass=True"}
+{"family": "workspace", "name": "chain", "seed": 2, "arm": "A", "ok": true, "tokens": 1046, "wall_s": 14.0, "detail": "submitted; full_pass=True"}
+{"family": "workspace", "name": "copy", "seed": 1, "arm": "A", "ok": false, "tokens": 2550, "wall_s": 32.3, "detail": "submitted; full_pass=False"}
+{"family": "workspace", "name": "copy", "seed": 2, "arm": "A", "ok": true, "tokens": 2086, "wall_s": 26.2, "detail": "submitted; full_pass=True"}
+
+| family | task | A |
+| --- | --- | ---: |
+| coding | suite-tar-01 | 0/4 |
+| coding | xfer-mime-01 | 0/4 |
+| coding | xfer-zip-01 | 0/4 |
+| computation | digits | 0/3 |
+| computation | knapsack | 3/3 |
+| computation | lcs | 0/3 |
+| computation | sales | 1/3 |
+| computation | weblog | 3/3 |
+| workspace | chain | 2/2 |
+| workspace | copy | 1/2 |
+| workspace | dedupeH | 1/2 |
+| workspace | invoiceH | 2/2 |
+| workspace | ledgerH | 2/2 |
+| **total** | | **15/37** |
+
+completion tokens: A 758,105

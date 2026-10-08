@@ -104,7 +104,7 @@ HumanEval: 164 problems, thinking off, temperature 0, max 1024 tokens, `bonsai-a
 |---|---:|---|---:|---:|---:|---:|---:|
 | Q4_K_M | 21.2 | no (16 layers of experts on CPU) | 5.62 | 1.67 | 95.7% | - | 16 |
 | Unsloth UD-IQ3_XXS | 13.2 | yes, up to 131k ctx (14.9 GB) | 5.87 | 1.90 | 93.9% | - | 169 |
-| Bonsai 2 27B (dense, trained ternary) | 5.9 | yes, 262k | - | - | 91.5% | 17/37 (repo report) | 83 (no MTP) |
+| Bonsai 2 27B (dense, trained ternary) | 5.9 | yes, 262k | - | - | 91.5% | 15/37 (repo report: 17/37) | 83 (no MTP) |
 | ternary-9.4g-down2k | 9.4 | yes, 262k (13.3 GB) | 6.39 | 2.19 | 90.9% | 14/37 | 197 |
 | iq2xxs | 9.1 | yes | 7.83 | 2.65 | 84.8% | 5/37 | 212 |
 | ternary-8.2g | 8.2 | yes, 262k (12.2 GB) | 6.92 | 2.37 | 78.7% | - | 186 |
@@ -157,5 +157,7 @@ Models that fit entirely on a 16 GB GPU, same machine and harness. Context = lar
 |---|---:|---:|---:|---:|---:|---:|
 | Welp-35B-A3B (ig-gptq) | 13.21 | 95.7% | 23/37 | 262k | 164 | 5111 |
 | Unsloth UD-IQ3_XXS | 13.21 | 93.9% | 21/37 | 262k | 165 | 5165 |
-| Qwen3.8-27B UD-Q3_K_XL (Unsloth, dense, Bonsai 2's base) | 13.15 | 96.3% | running | 131k (64k with q8_0 KV) | 47 | 2155 |
-| Bonsai 2 27B (PTQ1_0) | 5.95 | 91.5% | 17/37 (report; re-run queued) | 262k (q8_0 KV at 262k aborted) | 85 | 2278 |
+| Qwen3.8-27B UD-Q3_K_XL (Unsloth, dense, Bonsai 2's base) | 13.15 | 96.3% | 26/37 | 131k (64k with q8_0 KV) | 47 | 2155 |
+| Bonsai 2 27B (PTQ1_0) | 5.95 | 91.5% | 15/37 (report: 17/37) | 262k (q8_0 KV at 262k aborted) | 85 | 2278 |
+
+Long-exact by family (coding/computation/workspace): Qwen3.8-27B 7/12, 10/15, 9/10; Bonsai 2 27B 0/12, 7/15, 8/10 (every coding run hit the 12-response cap). Both at 64k context with q8_0 KV. Bonsai's run resumed after llama-server was OOM-killed at task 12 (its default 8 GiB host-RAM prompt cache on a 15 GB machine); tasks 12-37 ran with `--cache-ram 1024`, which only affects speed.
