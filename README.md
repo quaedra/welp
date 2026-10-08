@@ -148,3 +148,14 @@ Same tensor-type mix as Unsloth's UD-IQ3_XXS (expert gate/up IQ2_S, down IQ3_XXS
 | **ig-gptq** | 13.20 GB | **5.762** | **1.880** | **95.7%** | **23/37** | 164 | 5111 |
 
 Needle test at 214k with q4_0 KV: 3/3. `llama-qwen36` service now serves ig-gptq.
+
+## 16 GB comparison (2026-10-08)
+
+Models that fit entirely on a 16 GB GPU, same machine and harness. Context = largest that fits with a q4_0 KV cache.
+
+| model | GB | HumanEval | long-exact | context | decode tok/s | prefill tok/s (4k) |
+|---|---:|---:|---:|---:|---:|---:|
+| Welp-35B-A3B (ig-gptq) | 13.21 | 95.7% | 23/37 | 262k | 164 | 5111 |
+| Unsloth UD-IQ3_XXS | 13.21 | 93.9% | 21/37 | 262k | 165 | 5165 |
+| Qwen3.8-27B UD-Q3_K_XL (Unsloth, dense, Bonsai 2's base) | 13.15 | 96.3% | running | 131k (64k with q8_0 KV) | 47 | 2155 |
+| Bonsai 2 27B (PTQ1_0) | 5.95 | 91.5% | 17/37 (report; re-run queued) | 262k (q8_0 KV at 262k aborted) | 85 | 2278 |

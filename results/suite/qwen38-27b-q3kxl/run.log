@@ -1,0 +1,5 @@
+{"family": "coding", "name": "suite-tar-01", "seed": 1, "arm": "A", "ok": true, "tokens": 15525, "wall_s": 358.4, "detail": []}
+{"family": "coding", "name": "suite-tar-01", "seed": 2, "arm": "A", "ok": false, "tokens": 13389, "wall_s": 309.6, "detail": ["hidden1:result_schema", "hidden2:result_schema"]}
+{"family": "coding", "name": "suite-tar-01", "seed": 3, "arm": "A", "ok": true, "tokens": 11702, "wall_s": 268.0, "detail": []}
+{"family": "coding", "name": "suite-tar-01", "seed": 4, "arm": "A", "ok": false, "tokens": 16008, "wall_s": 366.6, "detail": ["hidden1:invalid_gzip", "hidden2:invalid_gzip"]}
+{"family": "coding", "name": "xfer-zip-01", "seed": 1, "arm": "A", "ok": true, "tokens": 7293, "wall_s": 169.2, "detail": []}
