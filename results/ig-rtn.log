@@ -1,0 +1,45 @@
+<frozen site>:101: RuntimeWarning: Unexpected value in sys.prefix, expected /home/jach/dev/ternary-qwen36/.venv, got /home/jach/dev/ternary-qwen36/scripts/../.venv
+<frozen site>:101: RuntimeWarning: Unexpected value in sys.exec_prefix, expected /home/jach/dev/ternary-qwen36/.venv, got /home/jach/dev/ternary-qwen36/scripts/../.venv
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] You tried to access the `ExpertsInterface` with a `config._experts_implementation` set to `None`. This is expected if you use an Expert Module as a standalone Module. If this is not the case, something went wrong with the dispatch of `config._experts_implementation`
+layer  0   40.0s
+layer  1   43.3s
+layer  2   42.8s
+layer  3   41.8s
+layer  4   47.7s
+layer  5   43.3s
+layer  6   43.4s
+layer  7   41.9s
+layer  8   43.4s
+layer  9   43.1s
+layer 10   43.1s
+layer 11   41.7s
+layer 12   43.0s
+layer 13   43.0s
+layer 14   43.3s
+layer 15   42.0s
+layer 16   43.1s
+layer 17   43.0s
+layer 18   43.0s
+layer 19   41.9s
+layer 20   43.0s
+layer 21   43.0s
+layer 22   43.1s
+layer 23   42.7s
+layer 24   42.7s
+layer 25   42.9s
+layer 26   43.0s
+layer 27   41.8s
+layer 28   43.3s
+layer 29   43.2s
+layer 30   43.5s
+layer 31   41.5s
+layer 32   42.8s
+layer 33   42.9s
+layer 34   36.3s
+layer 35   41.5s
+layer 36   43.0s
+layer 37   43.2s
+layer 38   38.5s
+layer 39   34.7s

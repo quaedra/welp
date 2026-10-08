@@ -132,3 +132,15 @@ Full 262k context on 16 GB (prompt of 214k tokens, served; `scripts/ctx_test.sh`
 | ternary-9.4g-down2k, q8_0 KV | 13.1 GB | 180 | 106 | 2511 |
 
 Needle test, UD-IQ3_XXS with q4_0 KV at 214k: 3/3 (10%, 50%, 90% depth). This is the service default (`MODE=full`).
+
+## Phase 3: block-wise GPTQ with ggml's own quantizers (`scripts/gptq_ggml.py`, 2026-10-08)
+
+Same tensor-type mix as Unsloth's UD-IQ3_XXS (expert gate/up IQ2_S, down IQ3_XXS or IQ4_XS in 3 layers, rest Q6_K; 13.20 GB, byte-identical size). Only the expert tensors are re-quantized: each expert matrix is quantized one 256-column block at a time by ggml's quantizer (imatrix = diagonal of the expert Hessian), and the block's error is pushed into the remaining columns (GPTQ lazy-batch update, Cholesky form). Down-proj Hessians come from the quantized gate/up; quantized layer output feeds the next layer. 256 calibration sequences, about 40 s per layer. `scripts/export_ggml.py` writes the bytes into a copy of the Unsloth file; dense tensors are untouched.
+
+| model | size | PPL wiki | PPL code | HumanEval | long-exact | decode | prefill (4k) |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Unsloth UD-IQ3_XXS | 13.20 GB | 5.873 | 1.900 | 93.9% (rerun 93.9%) | 21/37 | 165 | 5165 |
+| ig-rtn (control: our calibration, no error feedback) | 13.20 GB | 5.884 | 1.898 | - | - | - | - |
+| **ig-gptq** | 13.20 GB | **5.762** | **1.880** | **95.7%** | **23/37** | 164 | 5111 |
+
+Needle test at 214k with q4_0 KV: 3/3. `llama-qwen36` service now serves ig-gptq.
