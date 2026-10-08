@@ -1,0 +1,26 @@
+20:51 GPU free, starting
+20:51 ig-gptq depth 0
+20:51 ig-gptq depth 4096
+20:52 ig-gptq depth 16384
+20:52 ig-gptq depth 32768
+20:52 ig-gptq depth 65536
+20:53 ig-gptq depth 131072
+20:54 ig-gptq depth 196608
+20:56 ig-gptq depth 258048
+20:58 qwen38-27b-q3kxl depth 0
+20:58 qwen38-27b-q3kxl depth 4096
+20:59 qwen38-27b-q3kxl depth 16384
+20:59 qwen38-27b-q3kxl depth 32768
+21:00 qwen38-27b-q3kxl depth 65536
+21:02 qwen38-27b-q3kxl depth 131072
+21:04 qwen38-27b-q3kxl depth 196608
+21:06 qwen38-27b-q3kxl depth 196608 failed (does not fit?)
+21:06 bonsai-27b depth 0
+21:06 bonsai-27b depth 4096
+21:06 bonsai-27b depth 16384
+21:07 bonsai-27b depth 32768
+21:07 bonsai-27b depth 65536
+21:08 bonsai-27b depth 131072
+21:10 bonsai-27b depth 196608
+21:13 bonsai-27b depth 258048
+CTX-SPEED-DONE

@@ -161,3 +161,13 @@ Models that fit entirely on a 16 GB GPU, same machine and harness. Context = lar
 | Bonsai 2 27B (PTQ1_0) | 5.95 | 91.5% | 15/37 (report: 17/37) | 262k (q8_0 KV at 262k aborted) | 85 | 2278 |
 
 Long-exact by family (coding/computation/workspace): Qwen3.8-27B 7/12, 10/15, 9/10; Bonsai 2 27B 0/12, 7/15, 8/10 (every coding run hit the 12-response cap). Both at 64k context with q8_0 KV. Bonsai's run resumed after llama-server was OOM-killed at task 12 (its default 8 GiB host-RAM prompt cache on a 15 GB machine); tasks 12-37 ran with `--cache-ram 1024`, which only affects speed.
+
+Speed against context depth (`scripts/ctx_speed.sh`: llama-bench `-d`, tg128 and pp2048, q4_0 KV, `-ub 256` for every model, 2 runs; `results/ctxspeed/`). Decode tok/s / prefill tok/s:
+
+| depth | 0 | 4k | 16k | 32k | 64k | 128k | 192k | 252k |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Welp (ig-gptq) | 161.5 / 3826 | 161.8 / 3667 | 155.1 / 3301 | 151.8 / 3063 | 141.1 / 2637 | 126.9 / 2029 | 115.2 / 1647 | 105.0 / 1396 |
+| Bonsai 2 27B | 83.9 / 2335 | 83.8 / 2247 | 80.4 / 1952 | 76.5 / 1660 | 69.4 / 1285 | 58.8 / 882 | 50.9 / 672 | 45.1 / 548 |
+| Qwen3.8-27B Q3_K_XL | 46.6 / 2132 | 46.4 / 2044 | 45.3 / 1791 | 44.1 / 1550 | 41.6 / 1220 | 37.5 / 851 | does not fit | - |
+
+Prefill at depth 0 is below the pp4096 column above for the MoE models because of `-ub 256` (the batch Welp needs for 262k on 16 GB).
