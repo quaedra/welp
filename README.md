@@ -1,10 +1,14 @@
-# Welp: ternary Qwen3.6-35B-A3B
+# Welp-35B-A3B
 
-Goal: a ternary (PTQ1_0, 1.75 bpw) Qwen3.6-35B-A3B that runs fully on a 16 GB RTX 4080 Super, as a recipe test before Flash-Next.
+**Welp-35B-A3B** is a 13.21 GB GGUF of Qwen3.6-35B-A3B that runs on a 16 GB GPU with the full 262k context and scores higher than Unsloth's UD-IQ3_XXS at exactly the same size (wiki PPL 5.762 vs 5.873, HumanEval 95.7% vs 93.9%, long-exact suite 23/37 vs 21/37). Standard llama.cpp formats. Download: [quaedra/Welp-35B-A3B-GGUF](https://huggingface.co/quaedra/Welp-35B-A3B-GGUF) (`Welp-35B-A3B.gguf` = the `ig-gptq` build in Phase 3 below, SHA-256 d8f42610...0ef8182).
 
-## Setup
+Make it: `scripts/gptq_ggml.py --tag ig-gptq --mode gptq --nseq 256` (needs the HF safetensors in `models/hf` and Unsloth's UD-IQ3_XXS GGUF as `models/q/ud-iq3xxs.gguf` for the type mix and non-expert tensors), then `scripts/export_ggml.py models/q/ud-iq3xxs.gguf models/gptq/ig-gptq Welp-35B-A3B.gguf`. Serve: `scripts/serve.sh` (MODE=full: 262k ctx, q4_0 KV).
 
-Rebuild the engine: clone [professorpalmer/llama.cpp-ada-ternary](https://github.com/professorpalmer/llama.cpp-ada-ternary) branch `bonsai-q8-product` (PrismML fork plus the Bonsai Ada patches), `git am patches/0001-PTQ1_0-error-minimizing-ternary-fit-with-imatrix-wei.patch`, and build with CUDA (`-DGGML_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=89`). The patch is only needed to make the files; running them works on any PrismML build. Python: `python -m venv .venv && .venv/bin/pip install torch numpy safetensors transformers tokenizers wasmtime`. Released file: `Welp-35B-A3B.gguf` in [quaedra/Welp-35B-A3B-GGUF](https://huggingface.co/quaedra/Welp-35B-A3B-GGUF) = the `st-e` / `ternary-9.4g-down2k` build below (9.82 GB, SHA-256 19f8bbaf...b782e1). Note: sizes in the experiment tables below are MiB/1000 (e.g. "9.4" = 9.82 GB, "8.2" = 8.64 GB, IQ2_XXS "9.1" = 9.50 GB).
+The rest of this file is the research log in order. It started as a ternary (PTQ1_0) build for 16 GB; the best ternary build (9.82 GB, Phase 2b `st-e`) beats 2-bit quants but loses to UD-IQ3_XXS, which led to Phase 3. The ternary build is not released.
+
+## Setup (ternary phases)
+
+Rebuild the engine: clone [professorpalmer/llama.cpp-ada-ternary](https://github.com/professorpalmer/llama.cpp-ada-ternary) branch `bonsai-q8-product` (PrismML fork plus the Bonsai Ada patches), `git am patches/0001-PTQ1_0-error-minimizing-ternary-fit-with-imatrix-wei.patch`, and build with CUDA (`-DGGML_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=89`). The patch is only needed to make the files; running them works on any PrismML build. Python: `python -m venv .venv && .venv/bin/pip install torch numpy safetensors transformers tokenizers wasmtime`. Note: sizes in the experiment tables below are MiB/1000 (e.g. "9.4" = 9.82 GB, "8.2" = 8.64 GB, IQ2_XXS "9.1" = 9.50 GB).
 
 - `llama.cpp/`: PrismML fork at `adfffbe` plus the 33 Bonsai Ada patches (`~/dev/bonsai-ada-surgery/patches`), branch `ternary-fit`, plus an error-minimizing PTQ1_0 quantizer in `ggml/src/ggml-quants.c` (`quantize_ptq1_0`).
   - default: per 128-weight group, choose the trit set and scale that minimize the weighted squared error
