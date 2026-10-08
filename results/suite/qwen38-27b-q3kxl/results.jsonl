@@ -3,3 +3,35 @@
 {"family": "coding", "name": "suite-tar-01", "seed": 3, "arm": "A", "ok": true, "detail": [], "tokens": 11702, "responses": 12, "terminal": "response_cap", "wall_s": 268.0}
 {"family": "coding", "name": "suite-tar-01", "seed": 4, "arm": "A", "ok": false, "detail": ["hidden1:invalid_gzip", "hidden2:invalid_gzip"], "tokens": 16008, "responses": 12, "terminal": "response_cap", "wall_s": 366.6}
 {"family": "coding", "name": "xfer-zip-01", "seed": 1, "arm": "A", "ok": true, "detail": [], "tokens": 7293, "responses": 12, "terminal": "response_cap", "wall_s": 169.2}
+{"family": "coding", "name": "xfer-zip-01", "seed": 2, "arm": "A", "ok": false, "detail": ["hidden1:result_schema"], "tokens": 15311, "responses": 12, "terminal": "response_cap", "wall_s": 350.4}
+{"family": "coding", "name": "xfer-zip-01", "seed": 3, "arm": "A", "ok": true, "detail": [], "tokens": 16256, "responses": 12, "terminal": "response_cap", "wall_s": 373.8}
+{"family": "coding", "name": "xfer-zip-01", "seed": 4, "arm": "A", "ok": true, "detail": [], "tokens": 23125, "responses": 12, "terminal": "response_cap", "wall_s": 525.7}
+{"family": "coding", "name": "xfer-mime-01", "seed": 1, "arm": "A", "ok": false, "detail": ["hidden1:parse_defects"], "tokens": 18767, "responses": 12, "terminal": "response_cap", "wall_s": 445.7}
+{"family": "coding", "name": "xfer-mime-01", "seed": 2, "arm": "A", "ok": true, "detail": [], "tokens": 20458, "responses": 12, "terminal": "response_cap", "wall_s": 490.1}
+{"family": "coding", "name": "xfer-mime-01", "seed": 3, "arm": "A", "ok": true, "detail": [], "tokens": 19233, "responses": 12, "terminal": "response_cap", "wall_s": 442.8}
+{"family": "coding", "name": "xfer-mime-01", "seed": 4, "arm": "A", "ok": false, "detail": ["hidden1:parse_defects"], "tokens": 14910, "responses": 12, "terminal": "response_cap", "wall_s": 338.9}
+{"family": "computation", "name": "knapsack", "seed": 1, "arm": "A", "ok": true, "detail": "answer 270 truth 270", "tokens": 20734, "runs": 0, "wall_s": 465.5}
+{"family": "computation", "name": "knapsack", "seed": 2, "arm": "A", "ok": true, "detail": "answer 161 truth 161", "tokens": 20736, "runs": 0, "wall_s": 465.0}
+{"family": "computation", "name": "knapsack", "seed": 3, "arm": "A", "ok": true, "detail": "answer 237 truth 237", "tokens": 11195, "runs": 0, "wall_s": 248.3}
+{"family": "computation", "name": "digits", "seed": 1, "arm": "A", "ok": false, "detail": "answer 67120 truth 54305", "tokens": 21051, "runs": 0, "wall_s": 471.8}
+{"family": "computation", "name": "digits", "seed": 2, "arm": "A", "ok": false, "detail": "answer 86180 truth 35671", "tokens": 21211, "runs": 0, "wall_s": 475.2}
+{"family": "computation", "name": "digits", "seed": 3, "arm": "A", "ok": true, "detail": "answer 159976 truth 159976", "tokens": 21201, "runs": 0, "wall_s": 475.3}
+{"family": "computation", "name": "lcs", "seed": 1, "arm": "A", "ok": false, "detail": "answer None truth 17012", "tokens": 49152, "runs": 0, "wall_s": 1139.0}
+{"family": "computation", "name": "lcs", "seed": 2, "arm": "A", "ok": false, "detail": "answer 14001 truth 16006", "tokens": 21065, "runs": 0, "wall_s": 472.1}
+{"family": "computation", "name": "lcs", "seed": 3, "arm": "A", "ok": false, "detail": "answer None truth 14009", "tokens": 49152, "runs": 0, "wall_s": 1138.6}
+{"family": "computation", "name": "sales", "seed": 1, "arm": "A", "ok": true, "detail": "answer 3002244 truth 3002244", "tokens": 14267, "runs": 0, "wall_s": 325.0}
+{"family": "computation", "name": "sales", "seed": 2, "arm": "A", "ok": true, "detail": "answer 10 truth 10", "tokens": 4649, "runs": 0, "wall_s": 106.6}
+{"family": "computation", "name": "sales", "seed": 3, "arm": "A", "ok": true, "detail": "answer 1245458 truth 1245458", "tokens": 7222, "runs": 0, "wall_s": 164.3}
+{"family": "computation", "name": "weblog", "seed": 1, "arm": "A", "ok": true, "detail": "answer 1238271 truth 1238271", "tokens": 19620, "runs": 0, "wall_s": 455.5}
+{"family": "computation", "name": "weblog", "seed": 2, "arm": "A", "ok": true, "detail": "answer 24 truth 24", "tokens": 10104, "runs": 0, "wall_s": 237.1}
+{"family": "computation", "name": "weblog", "seed": 3, "arm": "A", "ok": true, "detail": "answer 4 truth 4", "tokens": 6724, "runs": 0, "wall_s": 157.7}
+{"family": "workspace", "name": "invoiceH", "seed": 1, "arm": "A", "ok": true, "detail": "submitted; full_pass=True", "tokens": 3301, "responses": 5, "wall_s": 79.8}
+{"family": "workspace", "name": "invoiceH", "seed": 2, "arm": "A", "ok": true, "detail": "submitted; full_pass=True", "tokens": 3409, "responses": 6, "wall_s": 82.1}
+{"family": "workspace", "name": "dedupeH", "seed": 1, "arm": "A", "ok": true, "detail": "submitted; full_pass=True", "tokens": 6997, "responses": 5, "wall_s": 161.1}
+{"family": "workspace", "name": "dedupeH", "seed": 2, "arm": "A", "ok": true, "detail": "submitted; full_pass=True", "tokens": 11841, "responses": 7, "wall_s": 271.4}
+{"family": "workspace", "name": "ledgerH", "seed": 1, "arm": "A", "ok": true, "detail": "submitted; full_pass=True", "tokens": 6031, "responses": 5, "wall_s": 138.9}
+{"family": "workspace", "name": "ledgerH", "seed": 2, "arm": "A", "ok": true, "detail": "submitted; full_pass=True", "tokens": 9645, "responses": 5, "wall_s": 220.4}
+{"family": "workspace", "name": "chain", "seed": 1, "arm": "A", "ok": true, "detail": "submitted; full_pass=True", "tokens": 581, "responses": 7, "wall_s": 15.2}
+{"family": "workspace", "name": "chain", "seed": 2, "arm": "A", "ok": true, "detail": "submitted; full_pass=True", "tokens": 463, "responses": 7, "wall_s": 12.3}
+{"family": "workspace", "name": "copy", "seed": 1, "arm": "A", "ok": false, "detail": "submitted; full_pass=False", "tokens": 485, "responses": 5, "wall_s": 12.3}
+{"family": "workspace", "name": "copy", "seed": 2, "arm": "A", "ok": true, "detail": "submitted; full_pass=True", "tokens": 1129, "responses": 5, "wall_s": 26.5}
